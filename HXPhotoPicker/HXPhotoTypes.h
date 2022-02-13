@@ -80,7 +80,8 @@ typedef NS_ENUM(NSUInteger, HXVideoAutoPlayType) {
 
 typedef NS_ENUM(NSUInteger, HXConfigurationType) {
     HXConfigurationTypeWXChat = 1,  //!< 微信聊天
-    HXConfigurationTypeWXMoment     //!< 微信朋友圈
+    HXConfigurationTypeWXMoment,    //!< 微信朋友圈
+    HXConfigurationTypePhotoClip    //!< 图片裁剪
 };
 
 typedef NS_ENUM(NSUInteger, HXPhotoListCancelButtonLocationType) {

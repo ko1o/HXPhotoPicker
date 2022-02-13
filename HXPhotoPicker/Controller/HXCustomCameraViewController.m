@@ -19,6 +19,7 @@
 #import "HX_PhotoEditViewController.h"
 #import "HXCustomNavigationController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "HXPhotoClipViewController.h"
 
 @interface HXCustomCameraViewController ()
 <HXCustomPreviewViewDelegate ,
@@ -541,6 +542,30 @@ CLLocationManagerDelegate
     [HXPhotoCommon photoCommon].cameraImage = [image hx_normalizedImage];
     [self.view insertSubview:self.imageView belowSubview:self.bottomView];
 //    [self.cameraController stopSession];
+    if (self.manager.configuration.type == HXConfigurationTypePhotoClip) {
+        self.topView.hidden = YES;
+        HXWeakSelf
+        HXPhotoModel *model = [HXPhotoModel photoModelWithImage:image];
+        model.creationDate = [NSDate date];
+        HXPhotoClipViewController *vc = [[HXPhotoClipViewController alloc] initWithPhotoModel:model config:self.manager.configuration];
+        vc.doneButtonClickAction = ^(HXPhotoClipViewController * _Nonnull viewController, UIButton * _Nonnull sender, UIImage * _Nonnull croppedImage) {
+            [weakSelf.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        };
+        
+        vc.cancelButtonClickAction = ^(HXPhotoClipViewController * _Nonnull viewController, UIButton * _Nonnull sender) {
+            [weakSelf.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        };
+        vc.backButtonClickAction = ^(HXPhotoClipViewController * _Nonnull viewController, UIButton * _Nonnull sender) {
+            weakSelf.topView.hidden = NO;
+            [weakSelf.cameraController startSession];
+            [weakSelf cancelClick:weakSelf.cancelBtn];
+            [viewController dismissViewControllerAnimated:YES completion:nil];
+        };
+        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+        vc.modalPresentationCapturesStatusBarAppearance = YES;
+        [self presentViewController:vc animated:YES completion:nil];
+        return;
+    }
     if (self.manager.configuration.useWxPhotoEdit &&
         self.manager.configuration.cameraPhotoJumpEdit) {
         self.topView.hidden = YES;

@@ -10,7 +10,10 @@
 
 @class HXPhotoManager;
 @interface UIView (HXExtension)
-
+@property (assign, nonatomic) CGFloat hx_left;        ///< Shortcut for frame.origin.x.
+@property (assign, nonatomic) CGFloat hx_top;         ///< Shortcut for frame.origin.y
+@property (assign, nonatomic) CGFloat hx_right;       ///< Shortcut for frame.origin.x + frame.size.width
+@property (assign, nonatomic) CGFloat hx_bottom;      ///< Shortcut for frame.origin.y + frame.size.height
 @property (assign, nonatomic) CGFloat hx_x;
 @property (assign, nonatomic) CGFloat hx_y;
 @property (assign, nonatomic) CGFloat hx_w;
@@ -50,6 +53,13 @@
 - (void)hx_radiusWithRadius:(CGFloat)radius corner:(UIRectCorner)corner;
 - (UIImage *)hx_captureImageAtFrame:(CGRect)rect;
 - (UIColor *)hx_colorOfPoint:(CGPoint)point;
+
+/// 转image
+- (UIImage *)hx_toImage;
+
+/// 底部安全距离
+CGFloat homeIndicatorHeight(void);
+
 @end
 
 

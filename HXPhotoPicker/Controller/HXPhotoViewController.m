@@ -35,6 +35,7 @@
 #import "HX_PhotoEditViewController.h"
 #import "UIColor+HXExtension.h"
 #import "HXAssetManager.h"
+#import "HXPhotoClipViewController.h"
 
 @interface HXPhotoViewController ()
 <
@@ -1411,6 +1412,26 @@ HX_PhotoEditViewControllerDelegate
                 [self.navigationController pushViewController:previewVC animated:YES];
             }else {
                 if (cell.model.subType == HXPhotoModelMediaSubTypePhoto) {
+                    if (self.manager.configuration.type == HXConfigurationTypePhotoClip) {
+                        HXPhotoClipViewController *vc = [[HXPhotoClipViewController alloc] initWithPhotoModel:cell.model config:self.manager.configuration];
+                        vc.photoPickerViewController = self;
+                        HXWeakSelf
+                        vc.cancelButtonClickAction = ^(HXPhotoClipViewController * _Nonnull viewController, UIButton * _Nonnull sender) {
+                            [weakSelf.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                        };
+                        
+                        vc.backButtonClickAction = ^(HXPhotoClipViewController * _Nonnull viewController, UIButton * _Nonnull sender) {
+                            [viewController dismissViewControllerAnimated:YES completion:nil];
+                        };
+                        
+                        vc.doneButtonClickAction = ^(HXPhotoClipViewController * _Nonnull viewController, UIButton * _Nonnull sender, UIImage * _Nonnull croppedImage) {
+                            [weakSelf.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+                        };
+                        vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
+                        vc.modalPresentationCapturesStatusBarAppearance = YES;
+                        [self presentViewController:vc animated:YES completion:nil];
+                        return;
+                    }
                     if (self.manager.configuration.useWxPhotoEdit) {
                         HX_PhotoEditViewController *vc = [[HX_PhotoEditViewController alloc] initWithConfiguration:self.manager.configuration.photoEditConfigur];
                         vc.photoModel = cell.model;

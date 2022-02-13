@@ -459,6 +459,10 @@
 		7BD52F7B24FE258200AE3D7C /* HXPhotoConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E65AF2487AD5B00077EE1 /* HXPhotoConfiguration.m */; };
 		7BD52F7C24FE258200AE3D7C /* HXPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E65DA2487AD5B00077EE1 /* HXPhotoManager.m */; };
 		7BD52F7D24FE258200AE3D7C /* HXPhotoTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4E65D92487AD5B00077EE1 /* HXPhotoTools.m */; };
+		B01BE5EB27B8A414002A8A8F /* HXPhotoClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B01BE5EA27B8A414002A8A8F /* HXPhotoClipViewController.m */; };
+		B05C035527B7882D000823B4 /* CustomClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C035427B7882D000823B4 /* CustomClipViewController.m */; };
+		B05C037227B7948B000823B4 /* HXPhotoClipTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C035927B7948B000823B4 /* HXPhotoClipTouchView.m */; };
+		B05C037627B7948B000823B4 /* HXPhotoClipScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B05C036F27B7948B000823B4 /* HXPhotoClipScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -821,6 +825,14 @@
 		7BD52EC024FE250E00AE3D7C /* HXPhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HXPhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BD52EC324FE250E00AE3D7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BE8DFD624C68B2800306042 /* HXPhotoViewCellCustomProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXPhotoViewCellCustomProtocol.h; sourceTree = "<group>"; };
+		B01BE5E927B8A414002A8A8F /* HXPhotoClipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HXPhotoClipViewController.h; sourceTree = "<group>"; };
+		B01BE5EA27B8A414002A8A8F /* HXPhotoClipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HXPhotoClipViewController.m; sourceTree = "<group>"; };
+		B05C035327B7882D000823B4 /* CustomClipViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomClipViewController.h; sourceTree = "<group>"; };
+		B05C035427B7882D000823B4 /* CustomClipViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomClipViewController.m; sourceTree = "<group>"; };
+		B05C035927B7948B000823B4 /* HXPhotoClipTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoClipTouchView.m; sourceTree = "<group>"; };
+		B05C036627B7948B000823B4 /* HXPhotoClipScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoClipScrollView.h; sourceTree = "<group>"; };
+		B05C036727B7948B000823B4 /* HXPhotoClipTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXPhotoClipTouchView.h; sourceTree = "<group>"; };
+		B05C036F27B7948B000823B4 /* HXPhotoClipScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXPhotoClipScrollView.m; sourceTree = "<group>"; };
 		BD48C3E6E6347457D779C67B /* Pods_HXPhotoPickerExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HXPhotoPickerExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C629E186D5E5B5CCE9BB584A /* Pods-HXPHPickerExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HXPHPickerExample.debug.xcconfig"; path = "Target Support Files/Pods-HXPHPickerExample/Pods-HXPHPickerExample.debug.xcconfig"; sourceTree = "<group>"; };
 		D634D25CE084AB88B72380DC /* Pods-HXPHPickerExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HXPHPickerExample.release.xcconfig"; path = "Target Support Files/Pods-HXPHPickerExample/Pods-HXPHPickerExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -946,6 +958,8 @@
 				7B08592C24FA58DE00E93091 /* YYFPSLabel.m */,
 				7B08592F24FA58DE00E93091 /* YYWeakProxy.h */,
 				7B08590E24FA58DE00E93091 /* YYWeakProxy.m */,
+				B05C035327B7882D000823B4 /* CustomClipViewController.h */,
+				B05C035427B7882D000823B4 /* CustomClipViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1193,6 +1207,7 @@
 		7B4E65AE2487AD5B00077EE1 /* HXPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				B01BE5E827B8A3D9002A8A8F /* PhotoClip */,
 				7B4D4BE524B858C600B03846 /* HXPhotoEdit */,
 				7B4E65F12487AD5B00077EE1 /* Model */,
 				7B4E65F92487AD5B00077EE1 /* View */,
@@ -1435,6 +1450,19 @@
 			path = HXPhotoPickerFramework;
 			sourceTree = "<group>";
 		};
+		B01BE5E827B8A3D9002A8A8F /* PhotoClip */ = {
+			isa = PBXGroup;
+			children = (
+				B01BE5E927B8A414002A8A8F /* HXPhotoClipViewController.h */,
+				B01BE5EA27B8A414002A8A8F /* HXPhotoClipViewController.m */,
+				B05C036627B7948B000823B4 /* HXPhotoClipScrollView.h */,
+				B05C036F27B7948B000823B4 /* HXPhotoClipScrollView.m */,
+				B05C036727B7948B000823B4 /* HXPhotoClipTouchView.h */,
+				B05C035927B7948B000823B4 /* HXPhotoClipTouchView.m */,
+			);
+			path = PhotoClip;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1615,7 +1643,7 @@
 					};
 					7B7E3E751E4AACD1002234EE = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 36YN45CVLK;
+						DevelopmentTeam = 56N8KQ9QFY;
 						LastSwiftMigration = 1320;
 						ProvisioningStyle = Automatic;
 					};
@@ -1906,6 +1934,7 @@
 				7B4E665E2487AD5C00077EE1 /* HXPreviewVideoView.m in Sources */,
 				7B4D4C6C24B858C600B03846 /* HXPhotoEdit.m in Sources */,
 				7B4D4C6A24B858C600B03846 /* HXPhotoEditTextView.m in Sources */,
+				B01BE5EB27B8A414002A8A8F /* HXPhotoClipViewController.m in Sources */,
 				7B08596A24FA58DF00E93091 /* WxMomentViewCell.m in Sources */,
 				7B08595E24FA58DF00E93091 /* UITextView+Placeholder.m in Sources */,
 				7B4E662E2487AD5C00077EE1 /* HXPhotoPersentInteractiveTransition.m in Sources */,
@@ -1925,11 +1954,13 @@
 				7B08596124FA58DF00E93091 /* Demo6SubViewController.m in Sources */,
 				7B4D4C6424B858C600B03846 /* HXPhotoEditGridView.m in Sources */,
 				7B08596324FA58DF00E93091 /* Demo1ViewController.m in Sources */,
+				B05C037627B7948B000823B4 /* HXPhotoClipScrollView.m in Sources */,
 				7B4E66312487AD5C00077EE1 /* UIViewController+HXExtension.m in Sources */,
 				7B08597A24FA58DF00E93091 /* Demo10ViewController.m in Sources */,
 				7B20B3F527A2A94D00375FB6 /* RowTypeRule.swift in Sources */,
 				7B4D4C6324B858C600B03846 /* HXPhotoEditChartletPreviewView.m in Sources */,
 				7B20B3FB27A2A94D00375FB6 /* EditorConfigurationViewController.swift in Sources */,
+				B05C037227B7948B000823B4 /* HXPhotoClipTouchView.m in Sources */,
 				7B4D4C4724B858C600B03846 /* HXPhotoEditChartletModel.m in Sources */,
 				7B4E665D2487AD5C00077EE1 /* HXCustomPreviewView.m in Sources */,
 				7B4D4C6624B858C600B03846 /* HXPhotoEditGraffitiColorViewCell.m in Sources */,
@@ -2016,6 +2047,7 @@
 				7B4E663A2487AD5C00077EE1 /* NSTimer+HXExtension.m in Sources */,
 				7B4E66602487AD5C00077EE1 /* HXPhotoPreviewViewCell.m in Sources */,
 				7B08595724FA58DF00E93091 /* Demo12ViewController.m in Sources */,
+				B05C035527B7882D000823B4 /* CustomClipViewController.m in Sources */,
 				7B20B3FF27A2A94D00375FB6 /* WeChatViewController.swift in Sources */,
 				7B20B40327A2A94D00375FB6 /* AvatarPickerConfigurationViewController.swift in Sources */,
 				7B08596B24FA58DF00E93091 /* Demo3ViewController.m in Sources */,
@@ -2339,7 +2371,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 36YN45CVLK;
+				DEVELOPMENT_TEAM = 56N8KQ9QFY;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",

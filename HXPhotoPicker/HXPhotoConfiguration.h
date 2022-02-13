@@ -15,7 +15,8 @@ HXPhotoBottomView,
 HXPhotoPreviewBottomView,
 HXPhotoManager,
 HXPhotoModel,
-HXPhotoPreviewViewController;
+HXPhotoPreviewViewController,
+HXPhotoClipViewController;
 
 @interface HXPhotoConfiguration : NSObject
 
@@ -278,6 +279,32 @@ HXPhotoPreviewViewController;
 @property (copy, nonatomic) void (^useCameraComplete)(HXPhotoModel *model);
 
 #pragma mark - < UI相关 >
+
+/// 裁剪相关
+/// 图片裁剪容器背景
+@property (assign, nonatomic) CGSize photoClipContainerSize;
+/// 图片裁剪大小
+@property (assign, nonatomic) CGSize photoClipSize;
+/// 图片裁剪圆角大小
+@property (assign, nonatomic) double photoClipCornerRadius;
+/// 图片裁剪提示图片
+@property (strong, nonatomic) UIImage *photoClipTipsImage;
+/// 图片裁剪提示内容
+@property (strong, nonatomic) NSString *photoClipTipsTitle;
+/// 图片裁剪返回按钮文案
+@property (strong, nonatomic) NSString *photoClipBackButtonTitle;
+/// 图片裁剪完成按钮文案
+@property (strong, nonatomic) NSString *photoClipDoneButtonTitle;
+/// 图片裁剪取消文案
+@property (strong, nonatomic) NSString *photoClipCancelButtonTitle;
+/// 图片裁剪返回点击
+@property (strong, nonatomic) void(^backButtonClickAction)(HXPhotoClipViewController *viewController, UIButton *sender);
+/// 图片裁剪完成按钮点击
+@property (strong, nonatomic) void(^doneButtonClickAction)(HXPhotoClipViewController *viewController, UIButton *sender, UIImage *croppedImage);
+/// 图片裁剪取消按钮点击
+@property (strong, nonatomic) void(^cancelButtonClickAction)(HXPhotoClipViewController *viewController, UIButton *sender);
+/// 进一步自定义裁剪UI
+@property (nonatomic, strong) void(^didPhotoClipLayoutSubviewsAction)(HXPhotoClipViewController *viewController);
 
 /// 相册权限为选择部分时，照片列表添加cell的背景颜色
 @property (strong, nonatomic) UIColor *photoListLimitCellBackgroundColor;

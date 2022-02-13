@@ -9,6 +9,8 @@
 #import "UIButton+HXExtension.h"
 #import <objc/runtime.h>
 
+static const NSString *TouchUpInsideActionBlockKey = @"TouchUpInsideActionBlockKey";
+
 @implementation UIButton (HXExtension)
 
 static char topNameKey;
@@ -50,4 +52,20 @@ static char leftNameKey;
         return CGRectContainsPoint(rect, point);
     }
 }
+
+
+- (void)hx_addTouchUpInsideWithAction:(TouchUpInsideActionBlock)action
+{
+    objc_setAssociatedObject(self, (__bridge const void * _Nonnull)(TouchUpInsideActionBlockKey), action, OBJC_ASSOCIATION_COPY);
+    [self addTarget:self action:@selector(hx_handleTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)hx_handleTouchUpInside:(UIButton *)sender
+{
+    TouchUpInsideActionBlock action = objc_getAssociatedObject(self, (__bridge const void * _Nonnull)(TouchUpInsideActionBlockKey));
+    if (action) {
+        action(sender);
+    }
+}
+
 @end

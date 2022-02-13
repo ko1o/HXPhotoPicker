@@ -10,6 +10,47 @@
 #import "HXPhotoPicker.h" 
 
 @implementation UIView (HXExtension)
+
+- (CGFloat)hx_left {
+    return self.frame.origin.x;
+}
+
+- (void)setHx_left:(CGFloat)x {
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+
+- (CGFloat)hx_top {
+    return self.frame.origin.y;
+}
+
+- (void)setHx_top:(CGFloat)y {
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    self.frame = frame;
+}
+
+- (CGFloat)hx_right {
+    return self.frame.origin.x + self.frame.size.width;
+}
+
+- (void)setHx_right:(CGFloat)right {
+    CGRect frame = self.frame;
+    frame.origin.x = right - frame.size.width;
+    self.frame = frame;
+}
+
+- (CGFloat)hx_bottom {
+    return self.frame.origin.y + self.frame.size.height;
+}
+
+- (void)setHx_bottom:(CGFloat)bottom {
+    CGRect frame = self.frame;
+    frame.origin.y = bottom - frame.size.height;
+    self.frame = frame;
+}
+
 - (void)setHx_x:(CGFloat)hx_x
 {
     CGRect frame = self.frame;
@@ -352,6 +393,16 @@
     }
     return image;
 }
+    
+- (UIImage *)hx_toImage {
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, [UIScreen mainScreen].scale);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
 
 - (UIColor *)hx_colorOfPoint:(CGPoint)point {
     unsigned char pixel[4] = {0};
@@ -368,6 +419,15 @@
     UIColor *color = [UIColor colorWithRed:pixel[0]/255.0 green:pixel[1]/255.0 blue:pixel[2]/255.0 alpha:pixel[3]/255.0];
     
     return color;
+}
+
+CGFloat homeIndicatorHeight(void)
+{
+    CGFloat height = 0;
+    if (@available(iOS 11.0, *)) {
+        height += [UIApplication sharedApplication].delegate.window.safeAreaInsets.bottom;
+    }
+    return height;
 }
 @end
 

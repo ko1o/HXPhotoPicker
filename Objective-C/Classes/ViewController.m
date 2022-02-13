@@ -26,6 +26,7 @@
 #import "Demo14ViewController.h"
 #import "Demo15ViewController.h"
 #import "HXPhotoPickerExample-Swift.h"
+#import "CustomClipViewController.h"
 
 static NSString *const kCellIdentifier = @"cell_identifier";
 
@@ -103,7 +104,10 @@ static NSString *const kCellIdentifier = @"cell_identifier";
 - (NSArray *)list
 {
     if (!_list) {
-        _list = @[[[ListItem alloc] initWithTitle:@"微信朋友圈"
+        _list = @[[[ListItem alloc] initWithTitle:@"自定义裁剪样式"
+                                         subTitle:@"支持自定义裁剪区域（圆形、矩形等）"
+                                    viewControllClass: [CustomClipViewController class]],
+                  [[ListItem alloc] initWithTitle:@"微信朋友圈"
                                      subTitle:@"仿微信朋友圈选图片功能(包含草稿功能)"
                                 viewControllClass: [WxMomentViewController class]],
                   [[ListItem alloc] initWithTitle:@"Demo1"
